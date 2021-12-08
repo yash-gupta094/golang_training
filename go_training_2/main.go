@@ -9,6 +9,22 @@ func main() {
 	loopExercise()
 
 	switchExercise()
+
+	fallThroughExercise()
+}
+
+func fallThroughExercise() {
+	i := 47
+	switch {
+	case i < 10:
+		fmt.Println(i, " is less than 10")
+		fallthrough
+	case i < 50:
+		fmt.Println(i, " is less than 50")
+		fallthrough
+	case i < 100:
+		fmt.Println(i, " is less than 100")
+	}
 }
 
 func switchExercise() {
