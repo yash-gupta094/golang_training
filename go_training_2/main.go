@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func main() {
 	a, b, c := 8, 1, 2
@@ -17,6 +20,76 @@ func main() {
 	stringArrayExercise()
 
 	reverseString()
+
+	multiDimensionalExercise()
+
+	sliceExercise()
+}
+
+//Find greatest in slice
+func sliceExercise() {
+	slice := make([]int, 0)
+	for i := 0; i < 10; i++ {
+		slice = append(slice, rand.Intn(900))
+	}
+	var greatest int = slice[0]
+	for _, value := range slice {
+		if value > greatest {
+			greatest = value
+		}
+	}
+	fmt.Println("Slice : ", slice)
+	fmt.Println("Greatest value in slice is: ", greatest)
+}
+
+func multiDimensionalExercise() {
+	arr := [2][2][2]int{
+		{
+			{1, 2},
+			{2, 3},
+		},
+		{
+			{4, 5},
+			{5, 6},
+		},
+	}
+	arr2 := [2][2][2]int{
+		{
+			{11, 12},
+			{12, 13},
+		},
+		{
+			{14, 15},
+			{15, 16},
+		},
+	}
+	var result [2][2][2]int
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 2; j++ {
+			for k := 0; k < 2; k++ {
+				result[i][j][k] = arr[i][j][k] + arr2[i][j][k]
+			}
+		}
+
+	}
+	fmt.Println("Addition of matrices: ", result)
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 2; j++ {
+			for k := 0; k < 2; k++ {
+				result[i][j][k] = arr2[i][j][k] - arr[i][j][k]
+			}
+		}
+	}
+	fmt.Println("Subtraction of matrices: ", result)
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 2; j++ {
+			for k := 0; k < 2; k++ {
+				result[i][j][k] = arr2[i][j][k] * arr[i][j][k]
+			}
+		}
+	}
+	fmt.Println("Multiplication of matrices: ", result)
+
 }
 
 func reverseString() {
