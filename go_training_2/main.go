@@ -24,6 +24,73 @@ func main() {
 	multiDimensionalExercise()
 
 	sliceExercise()
+
+	variadicExercise()
+
+	mapExercise()
+
+	sliceAndMapExercise()
+}
+
+func sliceAndMapExercise() {
+	slice := make([]int, 0)
+	countMap := map[int]int{}
+	for i := 0; i < 100; i++ {
+		slice = append(slice, rand.Intn(100))
+	}
+	fmt.Println(slice)
+	for _, value := range slice {
+		countMap[value]++
+	}
+	fmt.Println(countMap)
+}
+
+func mapExercise() {
+	student := map[int]string{
+		1: "Yash",
+		2: "Shantanu",
+		3: "Anand",
+	}
+	fmt.Println("Original list of students: ", student)
+	addStudent(student, 11, "Mayur")
+	fmt.Println("List after student added: ", student)
+	updateStudent(student, 11, "Mayuri")
+	fmt.Println("Updated list of students : ", student)
+	deleteStudent(student, 11)
+	fmt.Println("Updated list of students after deletion : ", student)
+	fmt.Println("Name of student with roll number:", 2, " is ", getStudent(student, 2))
+}
+
+func getStudent(student map[int]string, i int) string {
+	return student[i]
+}
+
+func deleteStudent(student map[int]string, i int) {
+	delete(student, i)
+}
+
+func updateStudent(student map[int]string, i int, s string) {
+	student[i] = s
+}
+
+func addStudent(student map[int]string, i int, s string) {
+	if _, ok := student[i]; !ok {
+		student[i] = s
+		return
+	}
+	fmt.Println("Can't add student already present with roll no. ", i)
+}
+
+func variadicExercise() {
+	fmt.Println("Variadic result", add(3, 2, 1, 4, 5))
+}
+
+func add(nums ...int) int {
+	sum := 0
+	for _, n := range nums {
+		sum += n
+	}
+	return sum
 }
 
 //Find greatest in slice
@@ -40,6 +107,10 @@ func sliceExercise() {
 	}
 	fmt.Println("Slice : ", slice)
 	fmt.Println("Greatest value in slice is: ", greatest)
+
+	// Remove element from index 3 of slice
+	slice = append(slice[:3], slice[3+1:]...)
+	fmt.Println("Removed third element from slice: ", slice)
 }
 
 func multiDimensionalExercise() {
