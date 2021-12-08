@@ -11,6 +11,50 @@ func main() {
 	switchExercise()
 
 	fallThroughExercise()
+
+	arrayExercise()
+
+	stringArrayExercise()
+
+	reverseString()
+}
+
+func reverseString() {
+	x := "Golang"
+	var y string = ""
+	for _, value := range x {
+		y = string(value) + y
+	}
+	fmt.Println("Reversed string: ", y)
+}
+
+func stringArrayExercise() {
+	str := "Hey@##"
+	noOfVowels := 0
+	noOfSpecialCharacters := 0
+	noOfConsonants := 0
+	for _, value := range str {
+		char := string(value)
+		switch {
+		case char == "a" || char == "e" || char == "i" || char == "o" || char == "u" || char == "A" || char == "E" || char == "I" || char == "O" || char == "U":
+			noOfVowels++
+		case ((char >= "a" && char <= "z") || (char >= "A" && char <= "Z")):
+			noOfConsonants++
+		default:
+			noOfSpecialCharacters++
+		}
+	}
+	fmt.Println("Vowels: ", noOfVowels, " Consonants: ", noOfConsonants, " Special Characters:", noOfSpecialCharacters)
+
+}
+
+func arrayExercise() {
+	num := [...]int{1, 2, 3, 4, 5}
+	sum := 0
+	for _, value := range num {
+		sum += value
+	}
+	fmt.Println("Sum of array: ", sum)
 }
 
 func fallThroughExercise() {
